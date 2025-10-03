@@ -76,6 +76,21 @@ const elements: Elements[] = [
     locator: (page: Page): Locator => page.getByRole('button', { name: 'Search (Command+K)' }),
     name: 'Search input',
   },
+  {
+    locator: (page: Page): Locator =>
+      page.getByRole('heading', { name: 'Playwright enables reliable' }),
+    name: 'Title',
+    text: 'Playwright enables reliable end-to-end testing for modern web apps.',
+  },
+  {
+    locator: (page: Page): Locator => page.getByRole('link', { name: 'Get started' }),
+    name: 'Get started button ',
+    attribute: {
+      type: 'href',
+      value: '/docs/intro',
+      text: 'Get started',
+    },
+  },
 ];
 
 import { test, expect } from '@playwright/test';
@@ -137,19 +152,19 @@ test.describe('Main page tests', () => {
     await page.getByLabel('Switch between dark and light mode').click();
     await expect.soft(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   });
-  test('Check the page title', async ({ page }) => {
-    await expect
-      .soft(page.getByRole('heading', { name: 'Playwright enables reliable' }))
-      .toBeVisible();
-    await expect
-      .soft(page.getByRole('heading', { name: 'Playwright enables reliable' }))
-      .toContainText('Playwright enables reliable end-to-end testing for modern web apps.');
-  });
-  test('Check the button "Get started"', async ({ page }) => {
-    await expect.soft(page.getByRole('link', { name: 'Get started' })).toBeVisible();
-    await expect.soft(page.getByRole('link', { name: 'Get started' })).toContainText('Get started');
-    await expect
-      .soft(page.getByRole('link', { name: 'Get started' }))
-      .toHaveAttribute('href', '/docs/intro');
-  });
+  // test('Check the page title', async ({ page }) => {
+  //   await expect
+  //     .soft(page.getByRole('heading', { name: 'Playwright enables reliable' }))
+  //     .toBeVisible();
+  //   await expect
+  //     .soft(page.getByRole('heading', { name: 'Playwright enables reliable' }))
+  //     .toContainText('Playwright enables reliable end-to-end testing for modern web apps.');
+  // });
+  // test('Check the button "Get started"', async ({ page }) => {
+  //   await expect.soft(page.getByRole('link', { name: 'Get started' })).toBeVisible();
+  //   await expect.soft(page.getByRole('link', { name: 'Get started' })).toContainText('Get started');
+  //   await expect
+  //     .soft(page.getByRole('link', { name: 'Get started' }))
+  //     .toHaveAttribute('href', '/docs/intro');
+  // });
 });

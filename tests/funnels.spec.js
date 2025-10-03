@@ -1,57 +1,337 @@
 import { test, expect } from '@playwright/test';
 
-test('test', async ({ page }) => {
-  await page.goto('https://qa.basenjiapps.net/childhood/');
-  await page.getByRole('button', { name: 'Allow All cookies' }).click();
-  await page.getByRole('button', { name: 'Take test' }).click();
-  await page.getByRole('button', { name: 'Female Female' }).click();
-  await page.getByRole('button', { name: '-45' }).click();
-  await page.getByRole('button', { name: 'I had no parents' }).click();
-  await page.getByRole('button', { name: 'Challenging and demanding' }).getByRole('checkbox').check();
-  await page.getByRole('button', { name: 'Next' }).click();
-  await page.getByRole('button', { name: 'Not sure' }).click();
-  await page.getByRole('button', { name: 'When feeling helpless' }).getByRole('checkbox').check();
-  await page.getByRole('button', { name: 'Next' }).click();
-  await page.getByRole('button', { name: 'No', exact: true }).click();
-  await page.getByRole('button', { name: 'ace score Somewhat relate' }).click();
-  await page.getByRole('button', { name: 'Not sure' }).click();
-  await page.getByRole('button', { name: 'Often' }).click();
-  await page.getByRole('button', { name: 'Next' }).click();
-  await page.getByRole('button', { name: 'ace score Strongly relate' }).click();
-  await page.getByRole('button', { name: 'Shyness' }).getByRole('checkbox').check();
-  await page.getByRole('button', { name: 'Next' }).click();
+test.describe('Main flow pass', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('https://qa.basenjiapps.net/childhood/');
+  });
+  test('Check the elements on the main page', async ({ page }) => {
+    await expect(page.getByText('Break free from childhood')).toBeVisible();
+    await expect(page.getByText('Break free from childhood')).toContainText(
+      'Break free from childhood trauma',
+    );
+    await expect(page.getByRole('button', { name: 'Take test' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Take test' })).toContainText('Take test');
+    await expect(page.getByRole('button', { name: 'Allow All cookies' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Allow All cookies' })).toContainText(
+      'Allow All cookies',
+    );
+    await expect(page.getByRole('img', { name: 'trauma test' })).toBeVisible();
+  });
+  test('Check the male 18 flow', async ({ page }) => {
+    await page.getByRole('button', { name: 'Allow All cookies' }).click();
+    await page.getByRole('button', { name: 'Take test' }).click();
+    await page.getByRole('button', { name: 'Male Male' }).click();
+    await page.getByRole('button', { name: '-21' }).click();
+    await page.getByRole('button', { name: 'Unhappily married' }).click();
+    await page.getByRole('button', { name: 'Unstable and unsafe' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: "I don't remember my childhood" }).click();
+    await page.getByRole('button', { name: 'Other' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'Not sure' }).click();
+    await page.getByRole('button', { name: 'ace score Somewhat relate' }).click();
+    await page.getByRole('button', { name: 'No', exact: true }).click();
+    await page.getByRole('button', { name: 'Often' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'ace score Strongly relate' }).click();
+    await page.getByRole('button', { name: 'Shyness' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.waitForTimeout(2000);
+    await expect(page.getByRole('img', { name: 'Liam' })).toBeVisible();
+  });
+  test('Check the male 25 flow', async ({ page }) => {
+    await page.getByRole('button', { name: 'Allow All cookies' }).click();
+    await page.getByRole('button', { name: 'Take test' }).click();
+    await page.getByRole('button', { name: 'Male Male' }).click();
+    await page.getByRole('button', { name: '-25' }).click();
+    await page.getByRole('button', { name: 'Unhappily married' }).click();
+    await page.getByRole('button', { name: 'Unstable and unsafe' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: "I don't remember my childhood" }).click();
+    await page.getByRole('button', { name: 'Other' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'Not sure' }).click();
+    await page.getByRole('button', { name: 'ace score Somewhat relate' }).click();
+    await page.getByRole('button', { name: 'No', exact: true }).click();
+    await page.getByRole('button', { name: 'Often' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'ace score Strongly relate' }).click();
+    await page.getByRole('button', { name: 'Shyness' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.waitForTimeout(2000);
+    await expect(page.getByRole('img', { name: 'Liam' })).toBeVisible();
+  });
+  test('Check the male 26-35 flow', async ({ page }) => {
+    await page.getByRole('button', { name: 'Allow All cookies' }).click();
+    await page.getByRole('button', { name: 'Take test' }).click();
+    await page.getByRole('button', { name: 'Male Male' }).click();
+    await page.getByRole('button', { name: '-35' }).click();
+    await page.getByRole('button', { name: 'Unhappily married' }).click();
+    await page.getByRole('button', { name: 'Unstable and unsafe' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: "I don't remember my childhood" }).click();
+    await page.getByRole('button', { name: 'Other' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'Not sure' }).click();
+    await page.getByRole('button', { name: 'ace score Somewhat relate' }).click();
+    await page.getByRole('button', { name: 'No', exact: true }).click();
+    await page.getByRole('button', { name: 'Often' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'ace score Strongly relate' }).click();
+    await page.getByRole('button', { name: 'Shyness' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.waitForTimeout(2000);
+    await expect(page.getByRole('img', { name: 'Oliver' })).toBeVisible();
+  });
+  test('Check the male flow 36-45', async ({ page }) => {
+    await page.getByRole('button', { name: 'Allow All cookies' }).click();
+    await page.getByRole('button', { name: 'Take test' }).click();
+    await page.getByRole('button', { name: 'Male Male' }).click();
+    await page.getByRole('button', { name: '-45' }).click();
+    await page.getByRole('button', { name: 'Unhappily married' }).click();
+    await page.getByRole('button', { name: 'Unstable and unsafe' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: "I don't remember my childhood" }).click();
+    await page.getByRole('button', { name: 'Other' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'Not sure' }).click();
+    await page.getByRole('button', { name: 'ace score Somewhat relate' }).click();
+    await page.getByRole('button', { name: 'No', exact: true }).click();
+    await page.getByRole('button', { name: 'Often' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'ace score Strongly relate' }).click();
+    await page.getByRole('button', { name: 'Shyness' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.waitForTimeout(2000);
+    await expect(page.getByRole('img', { name: 'Noah' })).toBeVisible();
+  });
+  test('Check the male flow 46-55', async ({ page }) => {
+    await page.getByRole('button', { name: 'Allow All cookies' }).click();
+    await page.getByRole('button', { name: 'Take test' }).click();
+    await page.getByRole('button', { name: 'Male Male' }).click();
+    await page.getByRole('button', { name: '-55' }).click();
+    await page.getByRole('button', { name: 'Unhappily married' }).click();
+    await page.getByRole('button', { name: 'Unstable and unsafe' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: "I don't remember my childhood" }).click();
+    await page.getByRole('button', { name: 'Other' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'Not sure' }).click();
+    await page.getByRole('button', { name: 'ace score Somewhat relate' }).click();
+    await page.getByRole('button', { name: 'No', exact: true }).click();
+    await page.getByRole('button', { name: 'Often' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'ace score Strongly relate' }).click();
+    await page.getByRole('button', { name: 'Shyness' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.waitForTimeout(2000);
+    await expect(page.getByRole('img', { name: 'Ethan' })).toBeVisible();
+  });
+  test('Check the male flow 56-71', async ({ page }) => {
+    await page.getByRole('button', { name: 'Allow All cookies' }).click();
+    await page.getByRole('button', { name: 'Take test' }).click();
+    await page.getByRole('button', { name: 'Male Male' }).click();
+    await page.getByRole('button', { name: '-65' }).click();
+    await page.getByRole('button', { name: 'Unhappily married' }).click();
+    await page.getByRole('button', { name: 'Unstable and unsafe' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: "I don't remember my childhood" }).click();
+    await page.getByRole('button', { name: 'Other' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'Not sure' }).click();
+    await page.getByRole('button', { name: 'ace score Somewhat relate' }).click();
+    await page.getByRole('button', { name: 'No', exact: true }).click();
+    await page.getByRole('button', { name: 'Often' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'ace score Strongly relate' }).click();
+    await page.getByRole('button', { name: 'Shyness' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.waitForTimeout(2000);
+    await expect(page.getByRole('img', { name: 'Benjamin' })).toBeVisible();
+  });
+  test('Check the female 18-25 flow', async ({ page }) => {
+    await page.getByRole('button', { name: 'Allow All cookies' }).click();
+    await page.getByRole('button', { name: 'Take test' }).click();
+    await page.getByRole('button', { name: 'Female Female' }).click();
+    await page.getByRole('button', { name: '-25' }).click();
+    await page.getByRole('button', { name: 'Unhappily married' }).click();
+    await page.getByRole('button', { name: 'Unstable and unsafe' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: "I don't remember my childhood" }).click();
+    await page.getByRole('button', { name: 'Other' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'Not sure' }).click();
+    await page.getByRole('button', { name: 'ace score Somewhat relate' }).click();
+    await page.getByRole('button', { name: 'No', exact: true }).click();
+    await page.getByRole('button', { name: 'Often' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'ace score Strongly relate' }).click();
+    await page.getByRole('button', { name: 'Shyness' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.waitForTimeout(2000);
+    await expect(page.getByRole('img', { name: 'Gloria' })).toBeVisible();
+  });
+  test('Check the female 26-35 flow', async ({ page }) => {
+    await page.getByRole('button', { name: 'Allow All cookies' }).click();
+    await page.getByRole('button', { name: 'Take test' }).click();
+    await page.getByRole('button', { name: 'Female Female' }).click();
+    await page.getByRole('button', { name: '-35' }).click();
+    await page.getByRole('button', { name: 'Unhappily married' }).click();
+    await page.getByRole('button', { name: 'Unstable and unsafe' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: "I don't remember my childhood" }).click();
+    await page.getByRole('button', { name: 'Other' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'Not sure' }).click();
+    await page.getByRole('button', { name: 'ace score Somewhat relate' }).click();
+    await page.getByRole('button', { name: 'No', exact: true }).click();
+    await page.getByRole('button', { name: 'Often' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'ace score Strongly relate' }).click();
+    await page.getByRole('button', { name: 'Shyness' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.waitForTimeout(2000);
+    await expect(page.getByRole('img', { name: 'Emma' })).toBeVisible();
+  });
+  test('Check the female 36-45 flow', async ({ page }) => {
+    await page.getByRole('button', { name: 'Allow All cookies' }).click();
+    await page.getByRole('button', { name: 'Take test' }).click();
+    await page.getByRole('button', { name: 'Female Female' }).click();
+    await page.getByRole('button', { name: '-40' }).click();
+    await page.getByRole('button', { name: 'Unhappily married' }).click();
+    await page.getByRole('button', { name: 'Unstable and unsafe' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: "I don't remember my childhood" }).click();
+    await page.getByRole('button', { name: 'Other' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'Not sure' }).click();
+    await page.getByRole('button', { name: 'ace score Somewhat relate' }).click();
+    await page.getByRole('button', { name: 'No', exact: true }).click();
+    await page.getByRole('button', { name: 'Often' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'ace score Strongly relate' }).click();
+    await page.getByRole('button', { name: 'Shyness' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.waitForTimeout(2000);
+    await expect(page.getByRole('img', { name: 'Ava' })).toBeVisible();
+  });
+  test('Check the female 46-55 flow', async ({ page }) => {
+    await page.getByRole('button', { name: 'Allow All cookies' }).click();
+    await page.getByRole('button', { name: 'Take test' }).click();
+    await page.getByRole('button', { name: 'Female Female' }).click();
+    await page.getByRole('button', { name: '-55' }).click();
+    await page.getByRole('button', { name: 'Unhappily married' }).click();
+    await page.getByRole('button', { name: 'Unstable and unsafe' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: "I don't remember my childhood" }).click();
+    await page.getByRole('button', { name: 'Other' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'Not sure' }).click();
+    await page.getByRole('button', { name: 'ace score Somewhat relate' }).click();
+    await page.getByRole('button', { name: 'No', exact: true }).click();
+    await page.getByRole('button', { name: 'Often' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'ace score Strongly relate' }).click();
+    await page.getByRole('button', { name: 'Shyness' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.waitForTimeout(2000);
+    await expect(page.getByRole('img', { name: 'Sophia' })).toBeVisible();
+  });
+  test('Check the female 56-71 flow', async ({ page }) => {
+    await page.getByRole('button', { name: 'Allow All cookies' }).click();
+    await page.getByRole('button', { name: 'Take test' }).click();
+    await page.getByRole('button', { name: 'Female Female' }).click();
+    await page.getByRole('button', { name: '+' }).click();
+    await page.getByRole('button', { name: 'Unhappily married' }).click();
+    await page.getByRole('button', { name: 'Unstable and unsafe' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: "I don't remember my childhood" }).click();
+    await page.getByRole('button', { name: 'Other' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'Not sure' }).click();
+    await page.getByRole('button', { name: 'ace score Somewhat relate' }).click();
+    await page.getByRole('button', { name: 'No', exact: true }).click();
+    await page.getByRole('button', { name: 'Often' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'ace score Strongly relate' }).click();
+    await page.getByRole('button', { name: 'Shyness' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.waitForTimeout(2000);
+    await expect(page.getByRole('img', { name: 'Olivia' })).toBeVisible();
+  });
+  test('Check pass flow', async ({ page }) => {
+    await page.getByRole('button', { name: 'Allow All cookies' }).click();
+    await page.getByRole('button', { name: 'Take test' }).click();
+    await page.getByRole('button', { name: 'Male Male' }).click();
+    await page.getByRole('button', { name: '-40' }).click();
+    await page.getByRole('button', { name: 'Unhappily married' }).click();
+    await page.getByRole('button', { name: 'Unstable and unsafe' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: "I don't remember my childhood" }).click();
+    await page.getByRole('button', { name: 'Other' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'Not sure' }).click();
+    await page.getByRole('button', { name: 'ace score Somewhat relate' }).click();
+    await page.getByRole('button', { name: 'No', exact: true }).click();
+    await page.getByRole('button', { name: 'Often' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'ace score Strongly relate' }).click();
+    await page.getByRole('button', { name: 'Shyness' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
     await page.waitForTimeout(2000);
     await page.getByRole('button', { name: 'Next' }).click();
-  await page.getByRole('button', { name: 'No', exact: true }).click();
-  await page.getByRole('button', { name: 'Try not to get attached' }).click();
-  await page.getByRole('button', { name: 'Next' }).click();
-  await page.getByRole('button', { name: 'Somewhat relate' }).click();
-  await page.getByRole('button', { name: 'Next' }).click();
-  await page.getByRole('button', { name: 'I didn\'t feel any lack' }).getByRole('checkbox').check();
-  await page.getByRole('button', { name: 'Next' }).click();
-  await page.getByRole('button', { name: 'No', exact: true }).click();
-  await page.getByRole('button', { name: 'ace score Can\'t relate' }).click();
-  await page.getByRole('button', { name: 'No', exact: true }).click();
-  await page.getByRole('button', { name: 'Enhance overall happiness' }).click();
-  await page.getByRole('button', { name: 'Next' }).click();
-  await page.getByRole('button', { name: '-3 months' }).click();
-  await page.getByRole('textbox', { name: 'Enter your name' }).click();
-  await page.getByRole('textbox', { name: 'Enter your name' }).fill('Aliaksandr');
-  await page.getByRole('button', { name: 'Continue' }).click();
-  await page.getByRole('button', { name: 'Next' }).click();
-  await page.getByRole('button', { name: 'Yes' }).click();
-  await page.getByRole('button', { name: 'Yes' }).click();
-  await page.getByRole('button', { name: 'Yes' }).click();
-  await page.goto('https://qa.basenjiapps.net/childhood/email/');
-  await page.getByRole('textbox', { name: 'Enter your email' }).click();
-  await page.getByRole('textbox', { name: 'Enter your email' }).fill('a.anikhouski+26091@bsnj.co');
-  await page.getByRole('button', { name: 'Explore results' }).click();
-  await page.getByRole('button', { name: 'Continue' }).click();
-  await page.getByRole('button', { name: '€1', exact: true }).click();
-  await page.getByRole('button', { name: 'Continue' }).click();
-  await page.getByRole('button', { name: 'Get my result and plan' }).click();
-  const page1Promise = page.waitForEvent('popup');
-  await page.locator('iframe[name="__zoid__paypal_buttons__eyJzZW5kZXIiOnsiZG9tYWluIjoiaHR0cHM6Ly9xYS5iYXNlbmppYXBwcy5uZXQifSwibWV0YURhdGEiOnsid2luZG93UmVmIjp7InR5cGUiOiJwYXJlbnQiLCJkaXN0YW5jZSI6MH19LCJyZWZlcmVuY2UiOnsidHlwZSI6InJhdyIsInZhbCI6IntcInVpZFwiOlwiem9pZC1wYXlwYWwtYnV0dG9ucy11aWRfMjQzZGExNzU3MV9tZGc2bXphNm16aVwiLFwiY29udGV4dFwiOlwiaWZyYW1lXCIsXCJ0YWdcIjpcInBheXBhbC1idXR0b25zXCIsXCJjaGlsZERvbWFpbk1hdGNoXCI6e1wiX190eXBlX19cIjpcInJlZ2V4XCIsXCJfX3ZhbF9fXCI6XCJcXFxcLnBheXBhbFxcXFwuKGNvbXxjbikoOlxcXFxkKyk/JFwifSxcInZlcnNpb25cIjpcIjEwXzRfMFwiLFwicHJvcHNcIjp7XCJmdW5kaW5nU291cmNlXCI6XCJwYXlwYWxcIixcInN0eWxlXCI6e1wibGFiZWxcIjpcInBheXBhbFwiLFwibGF5b3V0XCI6XCJob3Jpem9udGFsXCIsXCJjb2xvclwiOlwid2hpdGVcIixcInNoYXBlXCI6XCJyZWN0XCIsXCJ0YWdsaW5lXCI6ZmFsc2UsXCJoZWlnaHRcIjo0MixcInBlcmlvZFwiOntcIl9fdHlwZV9fXCI6XCJ1bmRlZmluZWRcIn0sXCJtZW51UGxhY2VtZW50XCI6XCJiZWxvd1wiLFwiZGlzYWJsZU1heFdpZHRoXCI6e1wiX190eXBlX19cIjpcInVuZGVmaW5lZFwifSxcImRpc2FibGVNYXhIZWlnaHRcIjp7XCJfX3R5cGVfX1wiOlwidW5kZWZpbmVkXCJ9LFwiYm9yZGVyUmFkaXVzXCI6e1wiX190eXBlX19cIjpcInVuZGVmaW5lZFwifSxcInNob3VsZEFwcGx5UmVicmFuZGVkU3R5bGVzXCI6ZmFsc2UsXCJpc0J1dHRvbkNvbG9yQUJUZXN0TWVyY2hhbnRcIjpmYWxzZX0sXCJvbkluaXRcIjp7XCJfX3R5cGVfX1wiOlwiY3Jvc3NfZG9tYWluX2Z1bmN0aW9uXCIsXCJfX3ZhbF9fXCI6e1wiaWRcIjpcInVpZF85NjljZGMyYTQyX21kZzZtemE2bXppXCIsXCJuYW1lXCI6XCJvbkluaXRcIn19LFwiY3JlYXRlQmlsbGluZ0FncmVlbWVudFwiOntcIl9fdHlwZV9fXCI6XCJjcm9zc19kb21haW5fZnVuY3Rpb25cIixcIl9fdmFsX19cIjp7XCJpZFwiOlwidWlkX2IwYmYxMTY3YzNfbWRnNm16YTZtemlcIixcIm5hbWVcIjpcImNyZWF0ZUJpbGxpbmdBZ3JlZW1lbnRcIn19LFwib25TaGlwcGluZ0NoYW5nZVwiOntcIl9fdHlwZV9fXCI6XCJjcm9zc19kb21haW5fZnVuY3Rpb25cIixcIl9fdmFsX19cIjp7XCJpZFwiOlwidWlkXzdiNzJiNjZkN2RfbWRnNm16YTZtemlcIixcIm5hbWVcIjpcIm9uU2hpcHBpbmdDaGFuZ2VcIn19LFwib25BcHByb3ZlXCI6e1wiX190eXBlX19cIjpcImNyb3NzX2RvbWFpbl9mdW5jdGlvblwiLFwiX192YWxfX1wiOntcImlkXCI6XCJ1aWRfNWY0Y2QwN2ZiMl9tZGc2bXphNm16aVwiLFwibmFtZVwiOlwib25BcHByb3ZlXCJ9fSxcIm9uQ2FuY2VsXCI6e1wiX190eXBlX19cIjpcImNyb3NzX2RvbWFpbl9mdW5jdGlvblwiLFwiX192YWxfX1wiOntcImlkXCI6XCJ1aWRfNmM5NDczYWE1Yl9tZGc2bXphNm16aVwiLFwibmFtZVwiOlwib25DYW5jZWxcIn19LFwiY3NwTm9uY2VcIjp7XCJfX3R5cGVfX1wiOlwidW5kZWZpbmVkXCJ9LFwiYXBwU3dpdGNoV2hlbkF2YWlsYWJsZVwiOntcIl9fdHlwZV9fXCI6XCJ1bmRlZmluZWRcIn0sXCJzaG93UGF5UGFsQXBwU3dpdGNoT3ZlcmxheVwiOntcIl9fdHlwZV9fXCI6XCJjcm9zc19kb21haW5fZnVuY3Rpb25cIixcIl9fdmFsX19cIjp7XCJpZFwiOlwidWlkXzA3YzJiZmRhZTNfbWRnNm16YTZtemlcIixcIm5hbWVcIjpcInNob3dQYXlQYWxBcHBTd2l0Y2hPdmVybGF5XCJ9fSxcImhpZGVQYXlQYWxBcHBTd2l0Y2hPdmVybGF5XCI6e1wiX190eXBlX19cIjpcImNyb3NzX2RvbWFpbl9mdW5jdGlvblwiLFwiX192YWxfX1wiOntcImlkXCI6XCJ1aWRfMjRkNDA3N2Y2NF9tZGc2bXphNm16aVwiLFwibmFtZVwiOlwiaGlkZVBheVBhbEFwcFN3aXRjaE92ZXJsYXlcIn19LFwicmVkaXJlY3RcIjp7XCJfX3R5cGVfX1wiOlwiY3Jvc3NfZG9tYWluX2Z1bmN0aW9uXCIsXCJfX3ZhbF9fXCI6e1wiaWRcIjpcInVpZF9lN2RjMDI4NmM1X21kZzZtemE2bXppXCIsXCJuYW1lXCI6XCJyZWRpcmVjdFwifX0sXCJsaXN0ZW5Gb3JIYXNoQ2hhbmdlc1wiOntcIl9fdHlwZV9fXCI6XCJjcm9zc19kb21haW5fZnVuY3Rpb25cIixcIl9fdmFsX19cIjp7XCJpZFwiOlwidWlkXzg4MzMxMGI0MzhfbWRnNm16YTZtemlcIixcIm5hbWVcIjpcImxpc3RlbkZvckhhc2hDaGFuZ2VzXCJ9fSxcInJlbW92ZUxpc3RlbmVyRm9ySGFzaENoYW5nZXNcIjp7XCJfX3R5cGVfX1wiOlwiY3Jvc3NfZG9tYWluX2Z1bmN0aW9uXCIsXCJfX3ZhbF9fXCI6e1wiaWRcIjpcInVpZF8zMmY2YjkwNzQ0X21kZzZtemE2bXppXCIsXCJuYW1lXCI6XCJyZW1vdmVMaXN0ZW5lckZvckhhc2hDaGFuZ2VzXCJ9fSxcImxpc3RlbkZvclZpc2liaWxpdHlDaGFuZ2VcIjp7XCJfX3R5cGVfX1wiOlwiY3Jvc3NfZG9tYWluX2Z1bmN0aW9uXCIsXCJfX3ZhbF9fXCI6e1wiaWRcIjpcInVpZF85MzNjYmVlYzI3X21kZzZtemE2bXppXCIsXCJuYW1lXCI6XCJsaXN0ZW5Gb3JWaXNpYmlsaXR5Q2hhbmdlXCJ9fSxcInJlbW92ZUxpc3RlbmVyRm9yVmlzaWJpbGl0eUNoYW5nZXNcIjp7XCJfX3R5cGVfX1wiOlwiY3Jvc3NfZG9tYWluX2Z1bmN0aW9uXCIsXCJfX3ZhbF9fXCI6e1wiaWRcIjpcInVpZF9hZTZhNzJkYTE5X21kZzZtemE2bXppXCIsXCJuYW1lXCI6XCJyZW1vdmVMaXN0ZW5lckZvclZpc2liaWxpdHlDaGFuZ2VzXCJ9fSxcImFsbG93QmlsbGluZ1BheW1lbnRzXCI6dHJ1ZSxcImFtb3VudFwiOntcIl9fdHlwZV9fXCI6XCJ1bmRlZmluZWRcIn0sXCJhcGlTdGFnZUhvc3RcIjp7XCJfX3R5cGVfX1wiOlwidW5kZWZpbmVkXCJ9LFwiYXBwbGVQYXlcIjp7XCJfX3R5cGVfX1wiOlwidW5kZWZpbmVkXCJ9LFwiYXBwbGVQYXlTdXBwb3J0XCI6ZmFsc2UsXCJicmFuZGVkXCI6e1wiX190eXBlX19cIjpcInVuZGVmaW5lZFwifSxcImJ1dHRvbkxvY2F0aW9uXCI6XCJxYS5iYXNlbmppYXBwcy5uZXRcIixcImJ1dHRvblNlc3Npb25JRFwiOlwidWlkXzQ5ZDQyZGExM2JfbWRnNm16YTZtemlcIixcImJ1dHRvblNpemVcIjp7XCJfX3R5cGVfX1wiOlwidW5kZWZpbmVkXCJ9LFwiYnV5ZXJDb3VudHJ5XCI6e1wiX190eXBlX19cIjpcInVuZGVmaW5lZFwifSxcImNsaWVudEFjY2Vzc1Rva2VuXCI6e1wiX190eXBlX19cIjpcInVuZGVmaW5lZFwifSxcImN1c3RvbWVySWRcIjpcIlwiLFwiY2xpZW50SURcIjpcIkFWMUgwV3pRMlRPbTNSSDQxRU1MWTVyQUkxNXpNNTdjRU8yaVZMRXhBeVJheTROREtMZ3AxakFVT0hCdkg5N25UZTB1cG0wYndmVW5mUVZVXCIsXCJjbGllbnRNZXRhZGF0YUlEXCI6XCJ1aWRfOTgyODllYzU2OF9tZGc2bXphNm16aVwiLFwiY29tbWl0XCI6dHJ1ZSxcImNvbXBvbmVudHNcIjpbXCJidXR0b25zXCIsXCJmdW5kaW5nLWVsaWdpYmlsaXR5XCJdLFwiY3JlYXRlT3JkZXJcIjp7XCJfX3R5cGVfX1wiOlwidW5kZWZpbmVkXCJ9LFwiY3JlYXRlU3Vic2NyaXB0aW9uXCI6e1wiX190eXBlX19cIjpcInVuZGVmaW5lZFwifSxcImNyZWF0ZVZhdWx0U2V0dXBUb2tlblwiOntcIl9fdHlwZV9fXCI6XCJ1bmRlZmluZWRcIn0sXCJjc3BcIjp7XCJub25jZVwiOlwiXCJ9LFwiY3VycmVuY3lcIjpcIlVTRFwiLFwiZGVidWdcIjpmYWxzZSxcImRpc2FibGVDYXJkXCI6W10sXCJkaXNhYmxlRnVuZGluZ1wiOltdLFwiZGlzYWJsZVNldENvb2tpZVwiOnRydWUsXCJkaXNwbGF5T25seVwiOltdLFwiZWFnZXJPcmRlckNyZWF0aW9uXCI6ZmFsc2UsXCJlbmFibGVGdW5kaW5nXCI6W10sXCJlbmFibGVUaHJlZURvbWFpblNlY3VyZVwiOmZhbHNlLFwiZW5hYmxlVmF1bHRcIjp7XCJfX3R5cGVfX1wiOlwidW5kZWZpbmVkXCJ9LFwiZW52XCI6XCJzYW5kYm94XCIsXCJleHBlcmltZW50XCI6e1wiZW5hYmxlVmVubW9cIjpmYWxzZSxcInZlbm1vVmF1bHRXaXRob3V0UHVyY2hhc2VcIjpmYWxzZSxcInNwYkVhZ2VyT3JkZXJDcmVhdGlvblwiOmZhbHNlLFwidmVubW9XZWJFbmFibGVkXCI6ZmFsc2UsXCJpc1dlYlZpZXdFbmFibGVkXCI6ZmFsc2UsXCJpc1BheXBhbFJlYnJhbmRFbmFibGVkXCI6ZmFsc2UsXCJpc1BheXBhbFJlYnJhbmRBQlRlc3RFbmFibGVkXCI6ZmFsc2UsXCJkZWZhdWx0Qmx1ZUJ1dHRvbkNvbG9yXCI6XCJkZWZhdWx0Qmx1ZV9kYXJrQmx1ZVwiLFwidmVubW9FbmFibGVXZWJPbk5vbk5hdGl2ZUJyb3dzZXJcIjpmYWxzZX0sXCJleHBlcmltZW50YXRpb25cIjp7fSxcImZsb3dcIjpcImJpbGxpbmdfc2V0dXBcIixcImZ1bmRpbmdFbGlnaWJpbGl0eVwiOntcInBheXBhbFwiOntcImVsaWdpYmxlXCI6dHJ1ZSxcInZhdWx0YWJsZVwiOnRydWV9LFwicGF5bGF0ZXJcIjp7XCJlbGlnaWJsZVwiOmZhbHNlLFwidmF1bHRhYmxlXCI6ZmFsc2UsXCJwcm9kdWN0c1wiOntcInBheUluM1wiOntcImVsaWdpYmxlXCI6ZmFsc2UsXCJ2YXJpYW50XCI6bnVsbH0sXCJwYXlJbjRcIjp7XCJlbGlnaWJsZVwiOmZhbHNlLFwidmFyaWFudFwiOm51bGx9LFwicGF5bGF0ZXJcIjp7XCJlbGlnaWJsZVwiOmZhbHNlLFwidmFyaWFudFwiOm51bGx9fX0sXCJjYXJkXCI6e1wiZWxpZ2libGVcIjp0cnVlLFwiYnJhbmRlZFwiOnRydWUsXCJpbnN0YWxsbWVudHNcIjpmYWxzZSxcInZlbmRvcnNcIjp7XCJ2aXNhXCI6e1wiZWxpZ2libGVcIjp0cnVlLFwidmF1bHRhYmxlXCI6dHJ1ZX0sXCJtYXN0ZXJjYXJkXCI6e1wiZWxpZ2libGVcIjp0cnVlLFwidmF1bHRhYmxlXCI6dHJ1ZX0sXCJhbWV4XCI6e1wiZWxpZ2libGVcIjp0cnVlLFwidmF1bHRhYmxlXCI6dHJ1ZX0sXCJkaXNjb3ZlclwiOntcImVsaWdpYmxlXCI6dHJ1ZSxcInZhdWx0YWJsZVwiOnRydWV9LFwiaGlwZXJcIjp7XCJlbGlnaWJsZVwiOmZhbHNlLFwidmF1bHRhYmxlXCI6ZmFsc2V9LFwiZWxvXCI6e1wiZWxpZ2libGVcIjpmYWxzZSxcInZhdWx0YWJsZVwiOnRydWV9LFwiamNiXCI6e1wiZWxpZ2libGVcIjpmYWxzZSxcInZhdWx0YWJsZVwiOnRydWV9LFwibWFlc3Ryb1wiOntcImVsaWdpYmxlXCI6dHJ1ZSxcInZhdWx0YWJsZVwiOnRydWV9LFwiZGluZXJzXCI6e1wiZWxpZ2libGVcIjp0cnVlLFwidmF1bHRhYmxlXCI6dHJ1ZX0sXCJjdXBcIjp7XCJlbGlnaWJsZVwiOnRydWUsXCJ2YXVsdGFibGVcIjp0cnVlfSxcImNiX25hdGlvbmFsZVwiOntcImVsaWdpYmxlXCI6ZmFsc2UsXCJ2YXVsdGFibGVcIjp0cnVlfX0sXCJndWVzdEVuYWJsZWRcIjpmYWxzZX0sXCJ2ZW5tb1wiOntcImVsaWdpYmxlXCI6ZmFsc2UsXCJ2YXVsdGFibGVcIjpmYWxzZX0sXCJpdGF1XCI6e1wiZWxpZ2libGVcIjpmYWxzZX0sXCJjcmVkaXRcIjp7XCJlbGlnaWJsZVwiOmZhbHNlfSxcImFwcGxlcGF5XCI6e1wiZWxpZ2libGVcIjpmYWxzZX0sXCJzZXBhXCI6e1wiZWxpZ2libGVcIjpmYWxzZX0sXCJpZGVhbFwiOntcImVsaWdpYmxlXCI6ZmFsc2V9LFwiYmFuY29udGFjdFwiOntcImVsaWdpYmxlXCI6ZmFsc2V9LFwiZ2lyb3BheVwiOntcImVsaWdpYmxlXCI6ZmFsc2V9LFwiZXBzXCI6e1wiZWxpZ2libGVcIjpmYWxzZX0sXCJzb2ZvcnRcIjp7XCJlbGlnaWJsZVwiOmZhbHNlfSxcIm15YmFua1wiOntcImVsaWdpYmxlXCI6ZmFsc2V9LFwicDI0XCI6e1wiZWxpZ2libGVcIjpmYWxzZX0sXCJ3ZWNoYXRwYXlcIjp7XCJlbGlnaWJsZVwiOmZhbHNlfSxcInBheXVcIjp7XCJlbGlnaWJsZVwiOmZhbHNlfSxcImJsaWtcIjp7XCJlbGlnaWJsZVwiOmZhbHNlfSxcInRydXN0bHlcIjp7XCJlbGlnaWJsZVwiOmZhbHNlfSxcIm94eG9cIjp7XCJlbGlnaWJsZVwiOmZhbHNlfSxcImJvbGV0b1wiOntcImVsaWdpYmxlXCI6ZmFsc2V9LFwiYm9sZXRvYmFuY2FyaW9cIjp7XCJlbGlnaWJsZVwiOmZhbHNlfSxcIm1lcmNhZG9wYWdvXCI6e1wiZWxpZ2libGVcIjpmYWxzZX0sXCJtdWx0aWJhbmNvXCI6e1wiZWxpZ2libGVcIjpmYWxzZX0sXCJzYXRpc3BheVwiOntcImVsaWdpYmxlXCI6ZmFsc2V9LFwicGFpZHlcIjp7XCJlbGlnaWJsZVwiOmZhbHNlfX0sXCJnZXRQYWdlVXJsXCI6e1wiX190eXBlX19cIjpcImNyb3NzX2RvbWFpbl9mdW5jdGlvblwiLFwiX192YWxfX1wiOntcImlkXCI6XCJ1aWRfOGM2OGE2N2JmYl9tZGc2bXphNm16aVwiLFwibmFtZVwiOlwiZ2V0UGFnZVVybFwifX0sXCJnZXRQb3B1cEJyaWRnZVwiOntcIl9fdHlwZV9fXCI6XCJjcm9zc19kb21haW5fZnVuY3Rpb25cIixcIl9fdmFsX19cIjp7XCJpZFwiOlwidWlkXzdhZmJlYjFkZjFfbWRnNm16YTZtemlcIixcIm5hbWVcIjpcImdldFBvcHVwQnJpZGdlXCJ9fSxcImdldFByZXJlbmRlckRldGFpbHNcIjp7XCJfX3R5cGVfX1wiOlwiY3Jvc3NfZG9tYWluX2Z1bmN0aW9uXCIsXCJfX3ZhbF9fXCI6e1wiaWRcIjpcInVpZF9lZjJiMjk4MDI3X21kZzZtemE2bXppXCIsXCJuYW1lXCI6XCJnZXRQcmVyZW5kZXJEZXRhaWxzXCJ9fSxcImdldFF1ZXJpZWRFbGlnaWJsZUZ1bmRpbmdcIjp7XCJfX3R5cGVfX1wiOlwiY3Jvc3NfZG9tYWluX2Z1bmN0aW9uXCIsXCJfX3ZhbF9fXCI6e1wiaWRcIjpcInVpZF8zM2ZiMjkwZTgyX21kZzZtemE2bXppXCIsXCJuYW1lXCI6XCJnZXRRdWVyaWVkRWxpZ2libGVGdW5kaW5nXCJ9fSxcImdsb2JhbFNlc3Npb25JRFwiOntcIl9fdHlwZV9fXCI6XCJ1bmRlZmluZWRcIn0sXCJob3N0ZWRCdXR0b25JZFwiOntcIl9fdHlwZV9fXCI6XCJ1bmRlZmluZWRcIn0sXCJpbnRlbnRcIjpcInRva2VuaXplXCIsXCJqc1Nka0xpYnJhcnlcIjp7XCJfX3R5cGVfX1wiOlwidW5kZWZpbmVkXCJ9LFwibG9jYWxlXCI6e1wiY291bnRyeVwiOlwiR0JcIixcImxhbmdcIjpcImVuXCJ9LFwibWVyY2hhbnRJRFwiOltdLFwibWVyY2hhbnRSZXF1ZXN0ZWRQb3B1cHNEaXNhYmxlZFwiOmZhbHNlLFwibWVzc2FnZVwiOntcIl9fdHlwZV9fXCI6XCJ1bmRlZmluZWRcIn0sXCJub25jZVwiOlwiXCIsXCJvbkNsaWNrXCI6e1wiX190eXBlX19cIjpcInVuZGVmaW5lZFwifSxcIm9uQ29tcGxldGVcIjp7XCJfX3R5cGVfX1wiOlwidW5kZWZpbmVkXCJ9LFwib25NZXNzYWdlQ2xpY2tcIjp7XCJfX3R5cGVfX1wiOlwiY3Jvc3NfZG9tYWluX2Z1bmN0aW9uXCIsXCJfX3ZhbF9fXCI6e1wiaWRcIjpcInVpZF8yNmM4ZjhkODc1X21kZzZtemE2bXppXCIsXCJuYW1lXCI6XCJvbk1lc3NhZ2VDbGlja1wifX0sXCJvbk1lc3NhZ2VIb3ZlclwiOntcIl9fdHlwZV9fXCI6XCJjcm9zc19kb21haW5fZnVuY3Rpb25cIixcIl9fdmFsX19cIjp7XCJpZFwiOlwidWlkXzNjOGJmZDIyOWJfbWRnNm16YTZtemlcIixcIm5hbWVcIjpcIm9uTWVzc2FnZUhvdmVyXCJ9fSxcIm9uTWVzc2FnZVJlYWR5XCI6e1wiX190eXBlX19cIjpcImNyb3NzX2RvbWFpbl9mdW5jdGlvblwiLFwiX192YWxfX1wiOntcImlkXCI6XCJ1aWRfNjk0MWYyZTZhZV9tZGc2bXphNm16aVwiLFwibmFtZVwiOlwib25NZXNzYWdlUmVhZHlcIn19LFwib25TaGlwcGluZ0FkZHJlc3NDaGFuZ2VcIjp7XCJfX3R5cGVfX1wiOlwidW5kZWZpbmVkXCJ9LFwib25TaGlwcGluZ09wdGlvbnNDaGFuZ2VcIjp7XCJfX3R5cGVfX1wiOlwidW5kZWZpbmVkXCJ9LFwiaGFzU2hpcHBpbmdDYWxsYmFja1wiOnRydWUsXCJwYWdlVHlwZVwiOntcIl9fdHlwZV9fXCI6XCJ1bmRlZmluZWRcIn0sXCJwYXJ0bmVyQXR0cmlidXRpb25JRFwiOntcIl9fdHlwZV9fXCI6XCJ1bmRlZmluZWRcIn0sXCJwYXltZW50TWV0aG9kTm9uY2VcIjp7XCJfX3R5cGVfX1wiOlwidW5kZWZpbmVkXCJ9LFwicGF5bWVudE1ldGhvZFRva2VuXCI6e1wiX190eXBlX19cIjpcInVuZGVmaW5lZFwifSxcInBheW1lbnRSZXF1ZXN0XCI6e1wiX190eXBlX19cIjpcInVuZGVmaW5lZFwifSxcInBsYXRmb3JtXCI6XCJkZXNrdG9wXCIsXCJyZWZlcnJlckRvbWFpblwiOntcIl9fdHlwZV9fXCI6XCJ1bmRlZmluZWRcIn0sXCJyZW1lbWJlclwiOntcIl9fdHlwZV9fXCI6XCJjcm9zc19kb21haW5fZnVuY3Rpb25cIixcIl9fdmFsX19cIjp7XCJpZFwiOlwidWlkXzY4Mzg2YmVkMjNfbWRnNm16YTZtemlcIixcIm5hbWVcIjpcInJlbWVtYmVyXCJ9fSxcInJlbWVtYmVyZWRcIjpbXSxcInJlbmRlcmVkQnV0dG9uc1wiOltcInBheXBhbFwiXSxcInNlc3Npb25JRFwiOlwidWlkXzk4Mjg5ZWM1NjhfbWRnNm16YTZtemlcIixcInNka0NvcnJlbGF0aW9uSURcIjpcInByZWJ1aWxkXCIsXCJzZGtJbml0VGltaW5nc1wiOntcInNka0luaXRUaW1lU3RhbXBcIjoxNzU4ODc1NDMyNTMxLFwic2RrU2NyaXB0RG93bmxvYWREdXJhdGlvblwiOntcIl9fdHlwZV9fXCI6XCJ1bmRlZmluZWRcIn0sXCJpc1Nka0NhY2hlZFwiOlwidW5rbm93blwifSxcInNka1Rva2VuXCI6e1wiX190eXBlX19cIjpcInVuZGVmaW5lZFwifSxcInNlc3Npb25TdGF0ZVwiOntcImdldFwiOntcIl9fdHlwZV9fXCI6XCJjcm9zc19kb21haW5fZnVuY3Rpb25cIixcIl9fdmFsX19cIjp7XCJpZFwiOlwidWlkXzZiMjdkMzI3ZTBfbWRnNm16YTZtemlcIixcIm5hbWVcIjpcImdldFwifX0sXCJzZXRcIjp7XCJfX3R5cGVfX1wiOlwiY3Jvc3NfZG9tYWluX2Z1bmN0aW9uXCIsXCJfX3ZhbF9fXCI6e1wiaWRcIjpcInVpZF9mNDc4YjllZTU3X21kZzZtemE2bXppXCIsXCJuYW1lXCI6XCJzZXRcIn19fSxcInNob3BwZXJTZXNzaW9uSWRcIjpcIlwiLFwiZ2V0U2hvcHBlckluc2lnaHRzVXNlZFwiOntcIl9fdHlwZV9fXCI6XCJjcm9zc19kb21haW5fZnVuY3Rpb25cIixcIl9fdmFsX19cIjp7XCJpZFwiOlwidWlkX2I2ZDAxODExOGVfbWRnNm16YTZtemlcIixcIm5hbWVcIjpcIl9yXCJ9fSxcInN0YWdlSG9zdFwiOntcIl9fdHlwZV9fXCI6XCJ1bmRlZmluZWRcIn0sXCJzdG9yYWdlSURcIjpcInVpZF9iMWM4ODcxOTdmX21kZzZtemE2bXppXCIsXCJzdG9yYWdlU3RhdGVcIjp7XCJnZXRcIjp7XCJfX3R5cGVfX1wiOlwiY3Jvc3NfZG9tYWluX2Z1bmN0aW9uXCIsXCJfX3ZhbF9fXCI6e1wiaWRcIjpcInVpZF9hMTk1ZGI0OGU0X21kZzZtemE2bXppXCIsXCJuYW1lXCI6XCJnZXRcIn19LFwic2V0XCI6e1wiX190eXBlX19cIjpcImNyb3NzX2RvbWFpbl9mdW5jdGlvblwiLFwiX192YWxfX1wiOntcImlkXCI6XCJ1aWRfNzk4YTBhNTY5Yl9tZGc2bXphNm16aVwiLFwibmFtZVwiOlwic2V0XCJ9fX0sXCJidXR0b25Db2xvclwiOntcInNob3VsZEFwcGx5UmVicmFuZGVkU3R5bGVzXCI6ZmFsc2UsXCJjb2xvclwiOlwid2hpdGVcIixcImlzQnV0dG9uQ29sb3JBQlRlc3RNZXJjaGFudFwiOmZhbHNlfSxcInN1cHBvcnRlZE5hdGl2ZUJyb3dzZXJcIjpmYWxzZSxcInN1cHBvcnRzUG9wdXBzXCI6dHJ1ZSxcInRlc3RcIjp7XCJhY3Rpb25cIjpcImNoZWNrb3V0XCJ9LFwidXNlckV4cGVyaWVuY2VGbG93XCI6e1wiX190eXBlX19cIjpcInVuZGVmaW5lZFwifSxcInVzZXJJRFRva2VuXCI6e1wiX190eXBlX19cIjpcInVuZGVmaW5lZFwifSxcInNka1NvdXJjZVwiOntcIl9fdHlwZV9fXCI6XCJ1bmRlZmluZWRcIn0sXCJ2YXVsdFwiOnRydWUsXCJ3YWxsZXRcIjp7XCJfX3R5cGVfX1wiOlwidW5kZWZpbmVkXCJ9LFwiaGlkZVN1Ym1pdEJ1dHRvbkZvckNhcmRGb3JtXCI6e1wiX190eXBlX19cIjpcInVuZGVmaW5lZFwifSxcInVzZXJBZ2VudFwiOlwiTW96aWxsYS81LjAgKE1hY2ludG9zaDsgSW50ZWwgTWFjIE9TIFggMTBfMTVfNykgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzE0MC4wLjAuMCBTYWZhcmkvNTM3LjM2XCJ9LFwiZXhwb3J0c1wiOntcImluaXRcIjp7XCJfX3R5cGVfX1wiOlwiY3Jvc3NfZG9tYWluX2Z1bmN0aW9uXCIsXCJfX3ZhbF9fXCI6e1wiaWRcIjpcInVpZF9jMmJjMmViNzIyX21kZzZtemE2bXppXCIsXCJuYW1lXCI6XCJpbml0XCJ9fSxcImNsb3NlXCI6e1wiX190eXBlX19cIjpcImNyb3NzX2RvbWFpbl9mdW5jdGlvblwiLFwiX192YWxfX1wiOntcImlkXCI6XCJ1aWRfYmQxNGJlM2U0Y19tZGc2bXphNm16aVwiLFwibmFtZVwiOlwiY2xvc2U6Om1lbW9pemVkXCJ9fSxcImNoZWNrQ2xvc2VcIjp7XCJfX3R5cGVfX1wiOlwiY3Jvc3NfZG9tYWluX2Z1bmN0aW9uXCIsXCJfX3ZhbF9fXCI6e1wiaWRcIjpcInVpZF80NGYzNGMyMjU1X21kZzZtemE2bXppXCIsXCJuYW1lXCI6XCJjaGVja0Nsb3NlXCJ9fSxcInJlc2l6ZVwiOntcIl9fdHlwZV9fXCI6XCJjcm9zc19kb21haW5fZnVuY3Rpb25cIixcIl9fdmFsX19cIjp7XCJpZFwiOlwidWlkXzFlNzQwMGQyN2ZfbWRnNm16YTZtemlcIixcIm5hbWVcIjpcInhuXCJ9fSxcIm9uRXJyb3JcIjp7XCJfX3R5cGVfX1wiOlwiY3Jvc3NfZG9tYWluX2Z1bmN0aW9uXCIsXCJfX3ZhbF9fXCI6e1wiaWRcIjpcInVpZF9jMDc0YjE2MzE1X21kZzZtemE2bXppXCIsXCJuYW1lXCI6XCJrblwifX0sXCJzaG93XCI6e1wiX190eXBlX19cIjpcImNyb3NzX2RvbWFpbl9mdW5jdGlvblwiLFwiX192YWxfX1wiOntcImlkXCI6XCJ1aWRfNGIyZjhhMjU1ZV9tZGc2bXphNm16aVwiLFwibmFtZVwiOlwibG5cIn19LFwiaGlkZVwiOntcIl9fdHlwZV9fXCI6XCJjcm9zc19kb21haW5fZnVuY3Rpb25cIixcIl9fdmFsX19cIjp7XCJpZFwiOlwidWlkXzI3Y2Q3ZTY1NWNfbWRnNm16YTZtemlcIixcIm5hbWVcIjpcImNuXCJ9fSxcImV4cG9ydFwiOntcIl9fdHlwZV9fXCI6XCJjcm9zc19kb21haW5fZnVuY3Rpb25cIixcIl9fdmFsX19cIjp7XCJpZFwiOlwidWlkXzI2ZGI5Y2M5ODJfbWRnNm16YTZtemlcIixcIm5hbWVcIjpcIkluXCJ9fX19In19__"]').contentFrame().getByRole('link', { name: 'PayPal' }).click();
-  const page1 = await page1Promise;
-  await page1.goto('https://www.sandbox.paypal.com/checkoutnow?atomic-event-state=eyJkb21haW4iOiJzZGtfcGF5cGFsX3Y1IiwiZXZlbnRzIjpbXSwiaW50ZW50IjoiY2xpY2tfcGF5bWVudF9idXR0b24iLCJpbnRlbnRUeXBlIjoiY2xpY2siLCJpbnRlcmFjdGlvblN0YXJ0VGltZSI6NTU0Mi4wOTk5OTk5MDQ2MzMsInRpbWVTdGFtcCI6NTU0MiwidGltZU9yaWdpbiI6MTc1ODg3NTQzMjU1OC4zLCJ0YXNrIjoic2VsZWN0X29uZV90aW1lX2NoZWNrb3V0IiwiZmxvdyI6Im9uZS10aW1lLWNoZWNrb3V0IiwidWlTdGF0ZSI6IndhaXRpbmciLCJwYXRoIjoiL3NtYXJ0L2J1dHRvbnMiLCJ2aWV3TmFtZSI6InBheXBhbC1zZGsifQ%3D%3D&sessionID=uid_98289ec568_mdg6mza6mzi&buttonSessionID=uid_49d42da13b_mdg6mza6mzi&stickinessID=uid_b1c887197f_mdg6mza6mzi&smokeHash=&sign_out_user=false&fundingSource=paypal&buyerCountry=PL&locale.x=en_GB&commit=true&client-metadata-id=uid_98289ec568_mdg6mza6mzi&standaloneFundingSource=paypal&branded=true&token=EC-7UU027052S090994E&clientID=AV1H0WzQ2TOm3RH41EMLY5rAI15zM57cEO2iVLExAyRay4NDKLgp1jAUOHBvH97nTe0upm0bwfUnfQVU&env=sandbox&sdkMeta=eyJ1cmwiOiJodHRwczovL3d3dy5wYXlwYWwuY29tL3Nkay9qcz9pbnRlZ3JhdGlvbi1kYXRlPTIwMjQtMDktMDEmY2xpZW50LWlkPUFWMUgwV3pRMlRPbTNSSDQxRU1MWTVyQUkxNXpNNTdjRU8yaVZMRXhBeVJheTROREtMZ3AxakFVT0hCdkg5N25UZTB1cG0wYndmVW5mUVZVJmNvbXBvbmVudHM9YnV0dG9ucyxmdW5kaW5nLWVsaWdpYmlsaXR5JnZhdWx0PXRydWUmaW50ZW50PXRva2VuaXplJmNvbW1pdD10cnVlIiwiYXR0cnMiOnsiZGF0YS11aWQiOiJ1aWRfamJienhmamRidm5nd2puaXNtYWlnbmhpcWV3cmZpIn19&country.x=GB&xcomponent=1&integration_artifact=PAYPAL_JS_SDK&version=5.0.510&hasShippingCallback=true');
+    await page.getByRole('button', { name: 'No', exact: true }).click();
+    await page.getByRole('button', { name: 'Open up easily' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'Hardly relate' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'Happiness' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'Not sure' }).click();
+    await page.getByRole('button', { name: 'ace score Somewhat relate' }).click();
+    await page.getByRole('button', { name: 'Not sure' }).click();
+    await page.getByRole('button', { name: 'Enhance overall happiness' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: '-3 months' }).click();
+    await page.getByRole('textbox', { name: 'Enter your name' }).click();
+    await page.getByRole('textbox', { name: 'Enter your name' }).fill('Aliaksandr');
+    await page.getByRole('button', { name: 'Continue' }).click();
+    await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'Yes' }).click();
+    await page.getByRole('button', { name: 'No' }).click();
+    await page.getByRole('button', { name: 'Yes' }).click();
+    await page.goto('https://qa.basenjiapps.net/childhood/email/');
+    await expect(page.getByText('Enter your email for detailed')).toBeVisible();
+    await expect(page.getByText('Enter your email for detailed')).toContainText(
+      'Enter your email for detailed test results and a healing plan',
+    );
+    await page.getByRole('textbox', { name: 'Enter your email' }).click();
+    await page
+      .getByRole('textbox', { name: 'Enter your email' })
+      .fill('a.anikhouski+01101@bsnj.co');
+    await page.getByRole('button', { name: 'Explore results' }).click();
+    await page.getByRole('button', { name: 'Continue' }).click();
+    await expect(page.getByText('Contribute what feels right')).toBeVisible();
+    await page.getByRole('button', { name: '€1', exact: true }).click();
+    await page.getByRole('button', { name: 'Continue' }).click();
+    await page.getByRole('button', { name: 'Get my result and plan' }).click();
+    await expect(
+      page
+        .locator('div')
+        .filter({ hasText: /^PayPal$/ })
+        .first(),
+    ).toBeVisible();
+    await expect(
+      page
+        .locator('div')
+        .filter({ hasText: /^Google Pay$/ })
+        .nth(1),
+    ).toBeVisible();
+    await expect(
+      page
+        .locator('div')
+        .filter({ hasText: /^Credit Card$/ })
+        .nth(1),
+    ).toBeVisible();
+  });
 });
